@@ -1,0 +1,170 @@
+.flash{
+  background-color: $action-color;
+  color: $side-color;
+  text-align: center;
+}
+
+.chat-side{
+  color: $side-color;
+  width: 300px;
+  float: left;
+  &__header{
+    height: 100px;
+    background-color: #253141;
+    line-height: 100px;
+    &__user-box{
+      display: flex;
+      width:100%;
+      font-weight: bold;
+      font-size: 16px;
+      justify-content: space-between;
+      &__name{
+        padding-left: 20px;
+      }
+      &__menu {
+        display: flex;
+        &__make-group{
+          
+          .fa-edit{
+            @include link-icon();
+            font-size: 16px;
+            color: $side-color;
+          }
+        }
+        &__user-account{
+          margin-left: 0.3rem;
+          .fa-cog{
+            @include link-icon();
+            padding-right: 20px;
+            font-size: 16px;
+            color: $side-color;
+          }
+        }
+      }
+    }
+  }
+  &__groups{
+    background-color:#2f3e51;
+    height: calc(100vh - 100px);
+    &__group{
+      padding: 20px 20px 40px;
+      &__name{
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      &__message{
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+.chat-main{
+  float: right;
+  width: calc(100vw - 300px);
+  box-sizing: border-box;
+  overflow: hidden;
+  .main-header{
+    height: 99px;
+    border-bottom: 1px solid #eeeeee;
+    justify-content: space-between;
+    display: flex;
+    padding: 0 40px;
+    &__group-box{
+      &__group-title{
+        font-size: 20px;
+        color: #333333;
+        margin: 35px 0 15px 0;
+      }
+      &__member{
+        font-size: 12px;
+        color: #999999;
+        display: flex;
+        margin-left: 3px;
+      }
+    }
+    &__edit-btn{
+      text-decoration: none;
+      &__text{
+        height: 40px;
+        color: #38aef0;
+        border: solid 1px $action-color;
+        margin-top: 30px;
+        padding: 0 20px;
+        line-height: 40px;
+      }
+    }
+  }
+  .messages{
+    background: #fafafa;
+    height: calc(100vh - 190px);
+    padding: 46px 40px;
+    box-sizing: border-box;
+    &__message{
+      &__info{
+        color: $info-color;
+        display: flex;
+        &__user-name{
+          font-size: 16px;
+          font-weight: bold;
+        }
+        &__date{
+          font-size: 12px;
+          color: #999999;
+          margin-left: 10px;
+        }
+      }
+      &__text{
+        font-size: 14px;
+        margin-bottom: 40px;
+        margin-top: 10px;
+      }
+    }
+  }
+  .send{
+    background-color: #ddd;
+    padding: 20px 40px;
+    height: 50px;
+    .form{
+      display: flex;
+      .text-box{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        position: relative;
+        &__textarea{
+          height: 50px;
+          width: 100%;
+          padding-left: 10px;
+          padding-right: 10px;
+          color: $info-color;
+          border-style: none;
+          font-size: 16px;
+        }
+        &__photo{
+          display: inline-block;
+          position: absolute;
+          top: 15px;
+          right: 10px;
+          .fa{
+            font-size: 21px;
+            @include link-icon();
+          }
+          #message_image{
+            display: none; 
+          }
+        }
+      }
+      .submit-btn{
+        width: 100px;
+        height: 50px;
+        padding: 0 30px;
+        margin-left: 15px;
+        background-color: $action-color;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+}
