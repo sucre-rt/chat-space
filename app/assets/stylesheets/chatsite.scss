@@ -1,11 +1,11 @@
 .flash{
-  background-color: #38AEF0;
-  color: #ffffff;
+  background-color: $action-color;
+  color: $side-color;
   text-align: center;
 }
 
 .chat-side{
-  color: #ffffff;
+  color: $side-color;
   width: 300px;
   float: left;
   &__header{
@@ -22,16 +22,23 @@
         padding-left: 20px;
       }
       &__menu {
+        display: flex;
         &__make-group{
-          display: inline-block;
-          font-weight: bold;
-          font-size: 16px;
+          
+          .fa-edit{
+            @include link-icon();
+            font-size: 16px;
+            color: $side-color;
+          }
         }
         &__user-account{
-          display: inline-block;
-          padding-right: 20px;
-          font-weight: bold;
-          font-size: 16px;
+          margin-left: 0.3rem;
+          .fa-cog{
+            @include link-icon();
+            padding-right: 20px;
+            font-size: 16px;
+            color: $side-color;
+          }
         }
       }
     }
@@ -55,10 +62,9 @@
 
 .chat-main{
   float: right;
-  background: #fafafa;
   width: calc(100vw - 300px);
   box-sizing: border-box;
-  overflow:hidden;
+  overflow: hidden;
   .main-header{
     height: 99px;
     border-bottom: 1px solid #eeeeee;
@@ -79,21 +85,25 @@
       }
     }
     &__edit-btn{
-      height: 40px;
-      color: #38aef0;
-      border: solid 1px #38aef0;
-      margin-top: 30px;
-      padding: 0 20px;
-      line-height: 40px;
+      text-decoration: none;
+      &__text{
+        height: 40px;
+        color: #38aef0;
+        border: solid 1px $action-color;
+        margin-top: 30px;
+        padding: 0 20px;
+        line-height: 40px;
+      }
     }
   }
   .messages{
+    background: #fafafa;
     height: calc(100vh - 190px);
     padding: 46px 40px;
     box-sizing: border-box;
     &__message{
       &__info{
-        color: #434A54;
+        color: $info-color;
         display: flex;
         &__user-name{
           font-size: 16px;
@@ -123,24 +133,26 @@
         height: 50px;
         display: flex;
         position: relative;
-        &--textarea{
+        &__textarea{
           height: 50px;
           width: 100%;
           padding-left: 10px;
           padding-right: 10px;
-          color: #434a54;
+          color: $info-color;
           border-style: none;
           font-size: 16px;
         }
-        &--photo{
+        &__photo{
           display: inline-block;
           position: absolute;
           top: 15px;
           right: 10px;
           .fa{
-            display: flex;
             font-size: 21px;
-            cursor: pointer;
+            @include link-icon();
+          }
+          #message_image{
+            display: none; 
           }
         }
       }
@@ -149,7 +161,7 @@
         height: 50px;
         padding: 0 30px;
         margin-left: 15px;
-        background-color: #38aef0;
+        background-color: $action-color;
         color: white;
         cursor: pointer;
       }
