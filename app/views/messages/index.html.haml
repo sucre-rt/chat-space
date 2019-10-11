@@ -2,14 +2,14 @@
 .chat-side
   .chat-side__header
     .chat-side__header__user-box
-      %p{class: "chat-side__header__user-box__name"}
+      %p.chat-side__header__user-box__name
         Guest
-      %ul{class: "chat-side__header__user-box__menu"}
-        %li{class: "chat-side__header__user-box__menu__make-group"}
+      %ul.chat-side__header__user-box__menu
+        %li.chat-side__header__user-box__menu__make-group
           = link_to "https://www.google.co.jp/" do
             = fa_icon 'edit', class: "fa-edit"
           %span<>
-        %li{class: "chat-side__header__user-box__menu__user-account"}
+        %li.chat-side__header__user-box__menu__user-account
           = link_to "https://www.google.co.jp/" do
             = fa_icon 'cog', class: "fa-cog"
   .chat-side__groups
@@ -17,13 +17,13 @@
 .chat-main
   .main-header
     .main-header__group-box
-      %h2{class: "main-header__group-box__group-title"}
+      %h2.main-header__group-box__group-title
         グループ名
-      %ul{class: "main-header__group-box__member"}
+      %ul.main-header__group-box__member
         Member：
-        %li{class: "main-header__group-box__member"}
+        %li.main-header__group-box__member
           Guest1
-        %li{class: "main-header__group-box__member"}
+        %li.main-header__group-box__member
           Guest2
     = link_to "https://www.google.co.jp/", class: "main-header__edit-btn" do
       .main-header__edit-btn__text
@@ -32,11 +32,11 @@
     = render "message"
   .send
     .form
-      %form{class: "text-box"}
-        %input{placeholder: "type a message", class: "text-box__textarea", type: "text", name: "message[content]"}
-        %label{class: "text-box__photo", for: "message_image"}
+      %form.text-box
+        %input.text-box__textarea{placeholder: "type a message", type: "text", name: "message[content]"}
+        %label.text-box__photo{for: "message_image"}
           %i.fa.fa-image
-          %input{class: "text-box__photo--image", type: "file", name: "message[image]", id: "message_image"}
-      %input{type: "submit", nama: "commit", value: "Send", class: "submit-btn"}
+          %input#message_image.text-box__photo--image{type: "file", name: "message[image]"}
+      %input.submit-btn{type: "submit", nama: "commit", value: "Send"}
 
 
