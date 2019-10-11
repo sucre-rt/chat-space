@@ -3,59 +3,69 @@
   %head
     %title ChatSpece
     %meta{charset: "utf-8"}
+    %link(rel="chatsite" href="css/styles.css")
   %body
     -# 全画面共通
     .flash
       .flash__message
         グループを作成しました
-    .contents
-      .chat-side
-        .side-header
-          .side-header__user-box
-            %p{class: "side-header__user-box__name"}
-              Guest
-            %ul{class: "side-header__user-box__menu"}
-              %li{class: "side-header__user-box__menu__make-group"}
-                ここにアイコン
-              %li{class: "side-header__user-box__menu__user-account"}
-                ここもアイコン
-          .groups
-            -# 部分テンプレートにする。リンク化する
-            .group 
-              %p{class: "group__name"}
-                SampleGroup
-              %p{class: "group__message"}
-                hello
-      .chat-main
-        .main-header
-          .main-header__group-box
-            %h2{class: "main-header__group-box__group-title"}
-            %ul{class: "main-header__group-box__member"}
-              Member：
-              %li{class: "main-header__group-box__member"}
-                Guest1
-              %li{class: "main-header__group-box__member"}
-                Guest2
-          .main-header__edit-btn
-            Edit
-        .messeges
-          .message
-            .message__info
-              %p{class: "message__info__user-name"}
-                Guest2
-              %p{class: "message__info__date"}
-                2019/10/07(Mon) 10:54:05
-            %p{class: "message__text"}
-          .message
-            .message__info
-              %p{class: "message__info__user-name"}
-                Guest2
-              %p{class: "message__info__date"}
-                2019/10/07(Mon) 10:54:05
-            %p{class: "message__text"}
-        .send
+    .chat-side
+      .chat-side__header
+        .chat-side__header__user-box
+          %p{class: "chat-side__header__user-box__name"}
+            Guest
+          %ul{class: "chat-side__header__user-box__menu"}
+            %li{class: "chat-side__header__user-box__menu__make-group"}
+              = fa_icon 'edit'
+              %span<>
+            %li{class: "chat-side__header__user-box__menu__user-account"}
+              = fa_icon 'cog'
+      .chat-side__groups
+        .chat-side__groups__group 
+          %p{class: "chat-side__groups__group__name"}
+            SampleGroup
+          %p{class: "chat-side__groups__group__message"}
+            hello
+        .chat-side__groups__group 
+          %p{class: "chat-side__groups__group__name"}
+            SampleGroup
+          %p{class: "chat-side__groups__group__message"}
+            hello
+    .chat-main
+      .main-header
+        .main-header__group-box
+          %h2{class: "main-header__group-box__group-title"}
+            グループ名
+          %ul{class: "main-header__group-box__member"}
+            Member：
+            %li{class: "main-header__group-box__member"}
+              Guest1
+            %li{class: "main-header__group-box__member"}
+              Guest2
+        .main-header__edit-btn
+          Edit
+      .messages
+        .messages__message
+          .messages__message__info
+            %p{class: "messages__message__info__user-name"}
+              Guest1
+            %p{class: "messages__message__info__date"}
+              2019/10/07(Mon) 10:54:05
+          %p{class: "messages__message__text"}
+            ねむい
+        .messages__message
+          .messages__message__info
+            %p{class: "messages__message__info__user-name"}
+              Guest２
+            %p{class: "messages__message__info__date"}
+              2019/10/07(Mon) 10:54:05
+          %p{class: "messages__message__text"}
+            こんばんは
+      .send
+        .form
           %form{class: "text-box"}
-            %input{placeholder: "type a message", class: "text-box__textarea", type: "text", name: "message[content]"}
-            %label{class: "text-box__image", for: "massage_image"}
-            -# アイコン
+            %input{placeholder: "type a message", class: "text-box--textarea", type: "text", name: "message[content]"}
+            %label{class: "text-box--photo", for: "massage_image"}
+              %i.fa.fa-image
+              %span<>
           %input{type: "submit", nama: "commit", value: "Send", class: "submit-btn"}
