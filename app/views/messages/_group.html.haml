@@ -1,10 +1,8 @@
-.chat-side__groups__group 
-  %p.chat-side__groups__group__name
-    SampleGroup
-  %p.chat-side__groups__group__message
-    hello
-.chat-side__groups__group 
-  %p.chat-side__groups__group__name
-    SampleGroup
-  %p.chat-side__groups__group__message
-    hello
+.groups
+  - current_user.groups.each do |group|
+    = link_to '#', class: "groups__group-link" do
+      .groups__group-link__group 
+        .groups__group-link__group__name
+          = group.name
+        .groups__group-link__group__message
+          メッセージはまだありません。
