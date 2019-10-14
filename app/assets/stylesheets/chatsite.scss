@@ -117,7 +117,6 @@
         width: 100%;
         height: 50px;
         display: flex;
-        position: relative;
         &__textarea{
           height: 50px;
           width: 100%;
@@ -127,17 +126,20 @@
           border-style: none;
           font-size: 16px;
         }
-        &__photo{
-          display: inline-block;
-          position: absolute;
-          top: 15px;
-          right: 10px;
-          .fa{
-            font-size: 21px;
-            @include link-icon();
-          }
-          #message_image{
-            display: none; 
+        &__mask{
+          position: relative;
+          &__photo{
+            display: inline-block;
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            .fa{
+              font-size: 21px;
+              @include link-icon();
+            }
+            #message_image{
+              display: none; 
+            }
           }
         }
       }
