@@ -1,16 +1,11 @@
 .messages__message
   .messages__message__info
-    %p.messages__message__info__user-name
-      Guest1
-    %p.messages__message__info__date
-      2019/10/07(Mon) 10:54:05
-  %p.messages__message__text
-    ねむい
-.messages__message
-  .messages__message__info
-    %p.messages__message__info__user-name
-      Guest２
-    %p.messages__message__info__date
-      2019/10/07(Mon) 10:54:05
-  %p.messages__message__text
-    こんばんは
+    .messages__message__info__user-name
+      = message.user.name
+    .messages__message__info__date
+      = message.created_at.strftime("%Y/%m/%d(%a) %H:%M")
+  .messages__message__text
+    - if message.content.present?
+      %p.messages__message__text__content
+        = message.content
+    = image_tag message.image.url, class: 'messages__message__text__image' if message.image.present?
