@@ -17,11 +17,10 @@
     = render partial: "messages/message"
   .send
     .form
-      %form.text-box
-        %input.text-box__textarea{placeholder: "type a message", type: "text", name: "message[content]"}
-        %label.text-box__photo{for: "message_image"}
-          %i.fa.fa-image
-          %input#message_image.text-box__photo--image{type: "file", name: "message[image]"}
-      %input.submit-btn{type: "submit", nama: "commit", value: "Send"}
-
-
+      = form_for [@group, @message], {:html => {:class => "text-box"}} do |f|
+        = f.text_field :content, class: 'text-box__textarea', placeholder: 'type a message'
+        .text-box__mask
+          = f.label :image, class: 'text-box__mask__photo', for: "message_image" do
+            = fa_icon 'fa-image', class: 'fa fa-image'
+            = f.file_field :image, id: 'message_image'
+        = f.submit 'Send', class: 'submit-btn'
