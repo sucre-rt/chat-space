@@ -35,7 +35,7 @@ $(function() {
           appendUser(user);
         });
       } else {
-        ppendErrMsgToHTML("ユーザーが見つかりません")
+        appendErrMsgToHTML("ユーザーが見つかりません")
       }
     })
     .fail(function(){
