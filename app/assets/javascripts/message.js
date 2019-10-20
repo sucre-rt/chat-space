@@ -45,10 +45,12 @@ $(function() {
       $('#message_content').val('')
       $('#message_image').val('')
       $('.messages').scrollTop( $(".messages")[0].scrollHeight );
-      $(".submit-btn").prop("disabled", false);
     })
     .fail(function(message) {
       alert('送信できませんでした')
+    })
+    .always(function(message){
+      $(".submit-btn").prop("disabled", false);
     })
   })
 })
