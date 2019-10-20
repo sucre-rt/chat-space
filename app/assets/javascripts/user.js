@@ -37,6 +37,9 @@ $(function() {
       } else {
         appendErrMsgToHTML("ユーザーが見つかりません")
       }
+      $('#user-search-result').on('click', '.chat-group-user__btn', function(){
+
+      });
     })
     .fail(function(){
       alert("ユーザー検索に失敗しました");
