@@ -35,9 +35,8 @@ $(function() {
     })
     .done(function(message) {
       let html = buildHTML(message);
-      $('.messages').append(html)
-      $('#message_content').val('')
-      $('#message_image').val('')
+      $('.messages').append(html);
+      $('.text-box')[0].reset();
       $('.messages').scrollTop( $(".messages")[0].scrollHeight );
     })
     .fail(function(message) {
