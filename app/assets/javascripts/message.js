@@ -1,13 +1,7 @@
 $(function() {
   function buildHTML(message){
-    let img = ""
-    if (message.image !== null) {
-      img = `<img src = "${ message.image }", class: 'messages__message__text__image'">`
-    }
-    let text = ""
-    if (message.content !== null) {
-      text = `${ message.content }`
-    }
+    let img = (message.image !== null) ? `<img src = "${ message.image }", class: 'messages__message__text__image'">`: "";
+    let text = (message.content !== null) ? `${ message.content }`: "";
     let html = `<div class="messages__message" data-id="${ message.id }">
                   <div class="messages__message__info">
                     <div class="messages__message__info__user-name">
