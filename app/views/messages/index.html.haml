@@ -3,14 +3,13 @@
   .main-header
     .main-header__group-box
       %h2.main-header__group-box__group-title
-        グループ名
+        = @group.name
       %ul.main-header__group-box__member
         Member：
-        %li.main-header__group-box__member
-          Guest1
-        %li.main-header__group-box__member
-          Guest2
-    = link_to "https://www.google.co.jp/", class: "main-header__edit-btn" do
+        - @members.each do |member|
+          %li.main-header__group-box__member
+            = member.name
+    = link_to edit_group_path(params[:group_id]), class: "main-header__edit-btn" do
       .main-header__edit-btn__text
         Edit
   .messages
