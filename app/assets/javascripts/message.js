@@ -43,6 +43,7 @@ $(function() {
       let html = buildHTML(message);
       $('.messages').append(html)
       $('#message_content').val('')
+      $('.messages').scrollTop( $(".messages")[0].scrollHeight );
     })
     .fail(function(message) {
       alert('送信できませんでした')
