@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(message){
     let img = ""
     if (message.image !== null) {
-      img = `<img src = "${ message.image }">`
+      let img = `<img src = "${ message.image }, class: 'messages__message__text__image'">`
     }
     let text = ""
     if (message.content !== null) {
@@ -21,9 +21,10 @@ $(function() {
                       <p class="messages__message__text__content">
                         ${ text }
                       </p>
-                    <image_tag ${ img }, class: 'messages__message__text__image >
+                    ${ img }
                   </div>
                 </div>`
+    return html
   }
 
   $('#new_message').on('submit', function(e){
@@ -40,7 +41,7 @@ $(function() {
     })
     .done(function(message) {
       let html = buildHTML(message);
-      $('#new_message').append(html)
+      $('.messages').append(html)
       $('#message_content').val('')
     })
     .fail(function(message) {
