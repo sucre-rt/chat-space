@@ -5,7 +5,7 @@
         = current_user.name
       %ul.chat-side__header__user-box__menu
         %li.chat-side__header__user-box__menu__make-group
-          = link_to new_group_path do
+          = link_to new_group_path, data: {"turbolinks" => false} do
             = fa_icon 'edit', class: "fa-edit"
         %li.chat-side__header__user-box__menu__user-account
           = link_to edit_user_path(current_user) do
