@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(message){
     let img = ""
     if (message.image !== null) {
-      let img = `<img src = "${ message.image }, class: 'messages__message__text__image'">`
+      img = `<img src = "${ message.image }", class: 'messages__message__text__image'">`
     }
     let text = ""
     if (message.content !== null) {
@@ -43,7 +43,9 @@ $(function() {
       let html = buildHTML(message);
       $('.messages').append(html)
       $('#message_content').val('')
+      $('#message_image').val('')
       $('.messages').scrollTop( $(".messages")[0].scrollHeight );
+      $(".submit-btn").prop("disabled", false);
     })
     .fail(function(message) {
       alert('送信できませんでした')
