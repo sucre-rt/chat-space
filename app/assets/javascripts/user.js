@@ -2,6 +2,14 @@ $(function() {
   let search_list = $("#user-search-result");
   let group_list = $("#user-group-result");
 
+  function addUserId(user_ids) {
+    $('.group-member').each(function(i,user_id) {
+      let id = $(user_id).val();
+      user_ids.push(id);
+    });
+    return user_ids;
+  }
+
   function appendUser(user) {
     let html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${ user.name }</p>
@@ -17,9 +25,9 @@ $(function() {
     search_list.append(html);
   }
 
-  function appendGroup(name, id) {
+  function GroupUser(name, id) {
     let html = `<div class='chat-group-user'>
-                <input name='group[user_ids][]' type='hidden' value='${ id }'>
+                <input name='group[user_ids][]' type='hidden' value='${ id }' class="group-member" >
                 <p class='chat-group-user__name'>${ name }</p>
                 <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
               </div>`
@@ -29,12 +37,15 @@ $(function() {
   $("#user-search-field").on("keyup", function(e) {
     e.preventDefault();
     let input = $("#user-search-field").val();
+    let user_ids = [];
+    
+    addUserId(user_ids);
 
     $.ajax({
       type: 'GET',
       url: '/users',
       dataType: 'json',
-      data: { keyword: input }
+      data: { keyword: input, user_ids: user_ids }
     })
 
     .done(function(users) {
@@ -56,7 +67,7 @@ $(function() {
       let id = $(this).data('user-id');
       let name = $(this).data('user-name');
       $(this).parent().remove();
-      appendGroup(name, id);
+      GroupUser(name, id);
     });
     $(document).on("click",'.user-search-remove', function() {
       $(this).parent().remove(); 
