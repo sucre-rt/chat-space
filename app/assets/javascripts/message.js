@@ -61,6 +61,7 @@ $(function() {
         insertHTML = buildHTML(message);
         $('.messages').append(insertHTML)
       });
+      setInterval(reloadMessages, 5000);
     })
     .fail(function() {
       console.log('error')
