@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(message){
     let img = (message.image !== null) ? `<img src = "${ message.image }", class: 'messages__message__text__image'">`: "";
     let text = (message.content !== null) ? `${ message.content }`: "";
-    let html = `<div class="messages__message" data-id="${ message.id }">
+    let html = `<div class="messages__message" data-message-id="${ message.id }">
                   <div class="messages__message__info">
                     <div class="messages__message__info__user-name">
                       ${ message.user_name }
@@ -56,7 +56,11 @@ $(function() {
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log('success');
+      let insertHTML = '';
+      $(messages).forEach(function(message) {
+        insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML)
+      });
     })
     .fail(function() {
       console.log('error')
