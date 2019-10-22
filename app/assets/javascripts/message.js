@@ -2,7 +2,7 @@ $(function() {
   function buildHTML(message){
     let img = (message.image !== null) ? `<img src = "${ message.image }", class: 'messages__message__text__image'">`: "";
     let text = (message.content !== null) ? `${ message.content }`: "";
-    let html = `<div class="messages__message" data-id="${ message.id }">
+    let html = `<div class="messages__message" data-message-id="${ message.id }">
                   <div class="messages__message__info">
                     <div class="messages__message__info__user-name">
                       ${ message.user_name }
@@ -45,5 +45,33 @@ $(function() {
     .always(function(message){
       $(".submit-btn").prop("disabled", false);
     })
-  })
+  });
+
+  if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    let reloadMessages = function() {
+      if ($('.messages')[0]){
+        var last_message_id = $('.messages__message:last').data('message-id');
+      } else {
+        var last_message_id = 0
+      }
+      $.ajax({
+        url: 'api/messages',
+        type: 'GET', 
+        dataType: 'json',
+        data: {last_message_id: last_message_id}
+      })
+      .done(function(messages) {
+        let insertHTML = '';
+        $(messages).each(function(i,message) {
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML);
+          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+        });
+      })
+      .fail(function() {
+        alert('error')
+      })
+    }
+  setInterval(reloadMessages, 5000);
+  }
 })

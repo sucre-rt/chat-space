@@ -9,7 +9,7 @@
         - @members.each do |member|
           %li.main-header__group-box__member
             = member.name
-    = link_to edit_group_path(params[:group_id]), class: "main-header__edit-btn", data: {"turbolinks" => false}  do
+    = link_to edit_group_path(params[:group_id]), class: "main-header__edit-btn", data: {"turbolinks" => false} do
       .main-header__edit-btn__text
         Edit
   .messages
