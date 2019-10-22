@@ -70,7 +70,6 @@
         .fail(function() {
           alert('error')
         })
-      
       } else {
         clearInterval
       }
