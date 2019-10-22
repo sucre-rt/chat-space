@@ -47,15 +47,13 @@ $(function() {
     })
   });
 
-  let reloadMessages = function() {
-    console.log('0')
-    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+  if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    let reloadMessages = function() {
       if ($('.messages')[0]){
         var last_message_id = $('.messages__message:last').data('message-id');
       } else {
         var last_message_id = 0
       }
-      console.log('1')
       $.ajax({
         url: 'api/messages',
         type: 'GET', 
@@ -74,6 +72,6 @@ $(function() {
         alert('error')
       })
     }
-  }
   setInterval(reloadMessages, 5000);
+  }
 })
