@@ -48,23 +48,32 @@ $(function() {
   });
 
   let reloadMessages = function() {
-    last_message_id = $(".messages__message:last").data(message-id);
-    $.ajax({
-      url: 'api/messages',
-      type: 'get',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
-    .done(function(messages) {
-      let insertHTML = '';
-      $(messages).forEach(function(message) {
-        insertHTML = buildHTML(message);
-        $('.messages').append(insertHTML)
-      });
-      setInterval(reloadMessages, 5000);
-    })
-    .fail(function() {
-      console.log('error')
-    })
+    console.log('0')
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+      if ($('.messages')[0]){
+        var last_message_id = $('.messages__message:last').data('message-id');
+      } else {
+        var last_message_id = 0
+      }
+      console.log('1')
+      $.ajax({
+        url: 'api/messages',
+        type: 'GET', 
+        dataType: 'json',
+        data: {last_message_id: last_message_id}
+      })
+      .done(function(messages) {
+        let insertHTML = '';
+        $(messages).each(function(i,message) {
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML);
+          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+        });
+      })
+      .fail(function() {
+        alert('error')
+      })
+    }
   }
+  setInterval(reloadMessages, 5000);
 })
