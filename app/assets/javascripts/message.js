@@ -34,9 +34,10 @@
         contentType: false
       })
       .done(function(message) {
+        console.log(message)
+        $('.text-box')[0].reset();
         let html = buildHTML(message);
         $('.messages').append(html);
-        $('.text-box')[0].reset();
         $('.messages').scrollTop( $(".messages")[0].scrollHeight );
       })
       .fail(function(message) {
@@ -57,9 +58,10 @@
           url: 'api/messages',
           type: 'GET', 
           dataType: 'json',
-          data: {last_message_id: last_message_id, id: last_message_id.id}
+          data: {last_message_id: last_message_id}
         })
         .done(function(messages) {
+          
           let insertHTML = '';
           $(messages).each(function(i,message) {
             insertHTML = buildHTML(message);
