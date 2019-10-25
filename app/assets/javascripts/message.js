@@ -1,4 +1,5 @@
- $(document).on('turbolinks:load', function(){
+// $(document).on('turbolinks:load', function(){
+  $(function(){
     function buildHTML(message){
       let img = (message.image !== null) ? `<img src = "${ message.image }", class: 'messages__message__text__image'">`: "";
       let text = (message.content !== null) ? `${ message.content }`: "";
@@ -34,7 +35,6 @@
         contentType: false
       })
       .done(function(message) {
-        console.log(message)
         $('.text-box')[0].reset();
         let html = buildHTML(message);
         $('.messages').append(html);
