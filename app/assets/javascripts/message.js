@@ -46,7 +46,7 @@
         $(".submit-btn").prop("disabled", false);
       })
     });
-    let reloadMessages = function() {
+    let reloadMessages = function(message) {
       if (window.location.href.match(/\/groups\/\d+\/messages/)) {
         if ($('.messages')[0]){
           var last_message_id = $('.messages__message:last').data('message-id');
@@ -57,7 +57,7 @@
           url: 'api/messages',
           type: 'GET', 
           dataType: 'json',
-          data: {last_message_id: last_message_id}
+          data: {last_message_id: last_message_id, id: last_message_id.id}
         })
         .done(function(messages) {
           let insertHTML = '';
